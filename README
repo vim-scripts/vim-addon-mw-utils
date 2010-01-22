@@ -1,0 +1,37 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2940
+
+* cached file contents
+  get some information from files and cache the result.
+  Reparse the file when it has changed automatically.
+
+* tiny-cmd : Never get the "Press ENTER or type command to continue"
+   message again
+
+* funcref:
+  - poor man's closures for Vim.
+  - Create function objects calling autoload function without sourcing that file
+  - (be lazy, do the work when it has to be done)
+  - get rid of the "Use upper case letters for custom functions" annoyance
+
+   Example:
+  let myFun = funcref#Function("return ARGS[0]")
+  let result = funcref#Call(myFun, [2])
+
+  let myFun2 =  funcref#Function("foo#bar#Baz")
+  
+  " pass arguments (kind of simple closure):
+  let myFun2 =  funcref#Function("return ARGS", {args: [1]} )
+  echo funcref#Call(myFun, [2])
+
+  echoes [1,2]
+
+  " bind function to an object:
+  let myFun2 =  funcref#Function("return SELF.myvalue", {self: {"a": "myvalue"} } )
+
+etc..
+
+This library is used by many of my plugins
+
+If something doesn't work it's a bug. So tell me to fix it!
+
+Reuse this code if you like it!
